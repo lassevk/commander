@@ -19,5 +19,12 @@ namespace Commander.Tests.CodeQuality
                    where type.IsPublic || type.IsNestedFamily || type.IsNestedFamORAssem
                    select type;
         }
+
+        public IEnumerable<MethodInfo> AllPublicMethods()
+        {
+            return from type in AllPublicTypes()
+                   from method in type.GetMethods(BindingFlags.DeclaredOnly | BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static)
+                   select method;
+        }
     }
 }

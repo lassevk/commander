@@ -20,7 +20,7 @@ namespace Commander.Tests.CodeQuality
         }
 
         [Test]
-        [TestCaseSource(nameof(AllPublicTypes))]
+        [TestCaseSource(nameof(AllPublicMethods))]
         [Conditional("JETBRAINS_ANNOTATIONS")]
         public void PublicMethod_IsTaggedWithPublicAPIAttribute(MethodInfo method)
         {
