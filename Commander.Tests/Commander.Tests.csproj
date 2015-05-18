@@ -53,6 +53,7 @@
     </Compile>
     <Compile Include="CodeQuality\CodeQualityTestBase.cs" />
     <Compile Include="CodeQuality\PublicAPITests.cs" />
+    <Compile Include="CodeQuality\NullableTypeTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

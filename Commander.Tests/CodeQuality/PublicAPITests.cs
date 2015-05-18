@@ -30,23 +30,24 @@ namespace Commander.Tests.CodeQuality
             Assert.That(attributeIsPresent, "Method " + method.Name + " of type " + method.DeclaringType.Name + " is not tagged with [PublicAPI]");
         }
 
-        public IEnumerable<MethodInfo> AllPublicMethodsReturningReferenceTypes()
+        [Test]
+        [TestCaseSource(nameof(AllPublicConstructors))]
+        [Conditional("JETBRAINS_ANNOTATIONS")]
+        public void PublicConstructor_IsTaggedWithPublicAPIAttribute(ConstructorInfo constructor)
         {
-            return from method in AllPublicMethods()
-                   where method.ReturnType != typeof(void)
-                   select method;
+            bool attributeIsPresent = constructor.GetCustomAttributes(typeof(PublicAPIAttribute), true).Any();
+            Assume.That(constructor.DeclaringType != null);
+            Assert.That(attributeIsPresent, "Constructor (" + string.Join(", ", constructor.GetParameters().Select(p => p.ParameterType.Name)) + " of type " + constructor.DeclaringType.Name + " is not tagged with [PublicAPI]");
         }
 
         [Test]
-        [TestCaseSource(nameof(AllPublicMethodsReturningReferenceTypes))]
+        [TestCaseSource(nameof(AllPublicProperties))]
         [Conditional("JETBRAINS_ANNOTATIONS")]
-        public void PublicMethod_ThatReturnsReferenceType_MustBeTaggedWithNotNullOrCanBeNullAttributes(MethodInfo method)
+        public void PublicProperty_IsTaggedWithPublicAPIAttribute(PropertyInfo property)
         {
-            bool hasNotNullAttribute = method.GetCustomAttributes(typeof(NotNullAttribute), true).Any();
-            bool hasCanBeNullAttribute = method.GetCustomAttributes(typeof(CanBeNullAttribute), true).Any();
-
-            Assume.That(method.DeclaringType != null);
-            Assert.That(hasNotNullAttribute || hasCanBeNullAttribute, "Method " + method.Name + " of type " + method.DeclaringType.Name + " must be tagged with [NotNull] or [CanBeNull]");
+            bool attributeIsPresent = property.GetCustomAttributes(typeof(PublicAPIAttribute), true).Any();
+            Assume.That(property.DeclaringType != null);
+            Assert.That(attributeIsPresent, "Property " + property.Name + " of type " + property.DeclaringType.Name + " is not tagged with [PublicAPI]");
         }
     }
 }

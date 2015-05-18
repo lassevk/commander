@@ -52,6 +52,7 @@
     <Compile Include="Assume.cs" />
     <Compile Include="CommandLineProgram.cs" />
     <Compile Include="CommandLineProgramResult.cs" />
+    <Compile Include="IOutputLine.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
