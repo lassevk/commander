@@ -7,6 +7,8 @@ namespace Commander.Monitors
     [PublicAPI]
     public class ProcessTimeoutMonitor : IProcessMonitor, IDisposable
     {
+        private static readonly TimeSpan _InfiniteTimeSpan = new TimeSpan(0, 0, 0, 0, -1);
+
         private readonly TimeSpan _Timeout;
         private readonly bool _ResetOnOutput;
         private IProcess _Process;
@@ -30,7 +32,7 @@ namespace Commander.Monitors
         {
             lock (_Lock)
             {
-                _Timer = new Timer(TimerCallback, null, _Timeout, Timeout.InfiniteTimeSpan);
+                _Timer = new Timer(TimerCallback, null, _Timeout, _InfiniteTimeSpan);
                 _Process = process;
             }
         }
@@ -64,14 +66,14 @@ namespace Commander.Monitors
         {
             if (_ResetOnOutput)
                 lock (_Lock)
-                    _Timer?.Change(_Timeout, Timeout.InfiniteTimeSpan);
+                    _Timer?.Change(_Timeout, _InfiniteTimeSpan);
         }
 
         void IProcessMonitor.Output(IProcess process, string line)
         {
             if (_ResetOnOutput)
                 lock (_Lock)
-                    _Timer?.Change(_Timeout, Timeout.InfiniteTimeSpan);
+                    _Timer?.Change(_Timeout, _InfiniteTimeSpan);
         }
 
         void IDisposable.Dispose()
