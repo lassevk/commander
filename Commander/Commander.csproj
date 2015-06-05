@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Commander</RootNamespace>
     <AssemblyName>Commander</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -21,6 +21,7 @@
     <DefineConstants>TRACE;DEBUG;JETBRAINS_ANNOTATIONS</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +30,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="JetBrains.Annotations, Version=9.1.1.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
@@ -50,9 +52,20 @@
     </Compile>
     <Compile Include="ArgumentHelpers.cs" />
     <Compile Include="Assume.cs" />
-    <Compile Include="CommandLineProgram.cs" />
-    <Compile Include="CommandLineProgramResult.cs" />
-    <Compile Include="IOutputLine.cs" />
+    <Compile Include="DebugProcessMonitor.cs" />
+    <Compile Include="ProcessErrorOutputEvent.cs" />
+    <Compile Include="ProcessEventsMonitor.cs" />
+    <Compile Include="IProcess.cs" />
+    <Compile Include="IProcessFeeded.cs" />
+    <Compile Include="IProcessMonitor.cs" />
+    <Compile Include="ProcessEx.cs" />
+    <Compile Include="ProcessExecution.cs" />
+    <Compile Include="ProcessExitedEvent.cs" />
+    <Compile Include="ProcessOutputEvent.cs" />
+    <Compile Include="ProcessEvent.cs" />
+    <Compile Include="ProcessResultLineType.cs" />
+    <Compile Include="ProcessStandardOutputEvent.cs" />
+    <Compile Include="ProcessStartedEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
