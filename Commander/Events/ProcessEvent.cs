@@ -1,7 +1,7 @@
 ﻿using System;
 using JetBrains.Annotations;
 
-namespace Commander
+namespace Commander.Events
 {
     [PublicAPI]
     public abstract class ProcessEvent
@@ -23,6 +23,12 @@ namespace Commander
         public TimeSpan RelativeTimestamp
         {
             get;
+        }
+
+        [PublicAPI, NotNull]
+        public override string ToString()
+        {
+            return $"{Timestamp} (+{RelativeTimestamp})";
         }
     }
 }

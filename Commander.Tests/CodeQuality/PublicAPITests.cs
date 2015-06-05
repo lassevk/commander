@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using JetBrains.Annotations;
 using NUnit.Framework;
+
+// ReSharper disable PossibleNullReferenceException
 
 namespace Commander.Tests.CodeQuality
 {

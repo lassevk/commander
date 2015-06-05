@@ -1,7 +1,7 @@
 ﻿using System;
 using JetBrains.Annotations;
 
-namespace Commander
+namespace Commander.Events
 {
     [PublicAPI]
     public class ProcessExitedEvent : ProcessEvent
@@ -17,6 +17,12 @@ namespace Commander
         public int ExitCode
         {
             get;
+        }
+
+        [PublicAPI, NotNull]
+        public override string ToString()
+        {
+            return $"{base.ToString()}: <exited: {ExitCode}>";
         }
     }
 }

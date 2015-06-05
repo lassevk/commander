@@ -1,7 +1,7 @@
 ﻿using System;
 using JetBrains.Annotations;
 
-namespace Commander
+namespace Commander.Events
 {
     [PublicAPI]
     public abstract class ProcessOutputEvent : ProcessEvent
@@ -20,6 +20,13 @@ namespace Commander
         public string Line
         {
             get;
+        }
+
+
+        [PublicAPI, NotNull]
+        public override string ToString()
+        {
+            return $"{base.ToString()}: {Line}";
         }
     }
 }

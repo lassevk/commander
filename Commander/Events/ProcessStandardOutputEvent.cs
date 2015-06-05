@@ -1,7 +1,7 @@
 ﻿using System;
 using JetBrains.Annotations;
 
-namespace Commander
+namespace Commander.Events
 {
     [PublicAPI]
     public class ProcessStandardOutputEvent : ProcessOutputEvent

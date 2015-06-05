@@ -80,6 +80,7 @@ namespace Commander
             foreach (var monitor in _Monitors)
                 monitor?.Started(this);
 
+            _ProcessExitedTaskCompletionSource.Task.ConfigureAwait(false);
             return _ProcessExitedTaskCompletionSource.Task;
         }
 

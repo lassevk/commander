@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{86457EF7-592A-41C2-953D-3D02A0EA50CD}</ProjectGuid>
+    <ProjectGuid>{061D6761-59BE-4DF5-9622-339ECC59CA1F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Commander</RootNamespace>
-    <AssemblyName>Commander</AssemblyName>
+    <RootNamespace>Commander.IntegrationTests</RootNamespace>
+    <AssemblyName>Commander.IntegrationTests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;JETBRAINS_ANNOTATIONS</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
@@ -37,44 +37,40 @@
       <HintPath>..\packages\JetBrains.Annotations.9.1.1\lib\net20\JetBrains.Annotations.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="nunit.framework, Version=2.6.4.14350, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\AssemblyInfo.Common.cs">
       <Link>Properties\AssemblyInfo.Common.cs</Link>
     </Compile>
-    <Compile Include="Assume.cs" />
-    <Compile Include="Monitors\DebugProcessMonitor.cs" />
-    <Compile Include="Events\ProcessErrorOutputEvent.cs" />
-    <Compile Include="Monitors\ProcessCollectOutputMonitor.cs" />
-    <Compile Include="IProcess.cs" />
-    <Compile Include="IProcessMonitor.cs" />
-    <Compile Include="Monitors\ProcessEventArgs.cs" />
-    <Compile Include="Monitors\ProcessEventMonitor.cs" />
-    <Compile Include="Monitors\ProcessExitedEventArgs.cs" />
-    <Compile Include="Monitors\ProcessOutputEventArgs.cs" />
-    <Compile Include="Monitors\ProcessStartedEventArgs.cs" />
-    <Compile Include="Monitors\ProcessTimeoutMonitor.cs" />
-    <Compile Include="ProcessEx.cs" />
-    <Compile Include="ProcessExecution.cs" />
-    <Compile Include="Events\ProcessExitedEvent.cs" />
-    <Compile Include="Events\ProcessOutputEvent.cs" />
-    <Compile Include="Events\ProcessEvent.cs" />
-    <Compile Include="Events\ProcessStandardOutputEvent.cs" />
-    <Compile Include="Events\ProcessStartedEvent.cs" />
+    <Compile Include="ExecutionTest.cs" />
+    <Compile Include="ProcessEventsComparer.cs" />
+    <Compile Include="Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Commander.TestExecutable\Commander.TestExecutable.csproj">
+      <Project>{7e3792e8-ba25-4c03-bd72-e526a3382cb9}</Project>
+      <Name>Commander.TestExecutable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Commander\Commander.csproj">
+      <Project>{86457ef7-592a-41c2-953d-3d02a0ea50cd}</Project>
+      <Name>Commander</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

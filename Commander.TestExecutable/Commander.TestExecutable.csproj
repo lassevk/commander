@@ -4,26 +4,28 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{86457EF7-592A-41C2-953D-3D02A0EA50CD}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{7E3792E8-BA25-4C03-BD72-E526A3382CB9}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Commander</RootNamespace>
-    <AssemblyName>Commander</AssemblyName>
+    <RootNamespace>Commander.TestExecutable</RootNamespace>
+    <AssemblyName>Commander.TestExecutable</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;JETBRAINS_ANNOTATIONS</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -43,38 +45,20 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="..\AssemblyInfo.Common.cs">
       <Link>Properties\AssemblyInfo.Common.cs</Link>
     </Compile>
-    <Compile Include="Assume.cs" />
-    <Compile Include="Monitors\DebugProcessMonitor.cs" />
-    <Compile Include="Events\ProcessErrorOutputEvent.cs" />
-    <Compile Include="Monitors\ProcessCollectOutputMonitor.cs" />
-    <Compile Include="IProcess.cs" />
-    <Compile Include="IProcessMonitor.cs" />
-    <Compile Include="Monitors\ProcessEventArgs.cs" />
-    <Compile Include="Monitors\ProcessEventMonitor.cs" />
-    <Compile Include="Monitors\ProcessExitedEventArgs.cs" />
-    <Compile Include="Monitors\ProcessOutputEventArgs.cs" />
-    <Compile Include="Monitors\ProcessStartedEventArgs.cs" />
-    <Compile Include="Monitors\ProcessTimeoutMonitor.cs" />
-    <Compile Include="ProcessEx.cs" />
-    <Compile Include="ProcessExecution.cs" />
-    <Compile Include="Events\ProcessExitedEvent.cs" />
-    <Compile Include="Events\ProcessOutputEvent.cs" />
-    <Compile Include="Events\ProcessEvent.cs" />
-    <Compile Include="Events\ProcessStandardOutputEvent.cs" />
-    <Compile Include="Events\ProcessStartedEvent.cs" />
+    <Compile Include="Constants.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

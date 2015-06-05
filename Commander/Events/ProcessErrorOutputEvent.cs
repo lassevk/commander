@@ -1,7 +1,7 @@
 using System;
 using JetBrains.Annotations;
 
-namespace Commander
+namespace Commander.Events
 {
     [PublicAPI]
     public class ProcessErrorOutputEvent : ProcessOutputEvent
@@ -10,6 +10,13 @@ namespace Commander
         public ProcessErrorOutputEvent(TimeSpan relativeTimestamp, DateTime timestamp, [NotNull] string line)
             : base(relativeTimestamp, timestamp, line)
         {
+        }
+
+        // ReSharper disable once AnnotationRedundancyInHierarchy
+        [PublicAPI, NotNull]
+        public override string ToString()
+        {
+            return $"{base.ToString()} <error>";
         }
     }
 }
