@@ -7,8 +7,8 @@ class in such a way that it becomes easier to monitor output, feed the running p
 Basic example:
 
     var psi = new ProcessStartInfo("hg", "clone http://some.domain.com/repo d:\temp");
-    var result = await ProcessEx.ExecuteAsync(psi);
-    if (result.ExitCode == 0)
+    var exitcode = await ProcessEx.ExecuteAsync(psi);
+    if (exitcode == 0)
     {
         // success
     }
@@ -24,8 +24,8 @@ More complex example:
         else if (e.Line == "Enter password:")
             e.Process.WriteLine("pa$$w0rd");
     };
-    var result = await ProcessEx.ExecuteAsync(psi, evts);
-    if (result.ExitCode == 0)
+    var exitcode = await ProcessEx.ExecuteAsync(psi, evts);
+    if (exitcode == 0)
     {
         // success
     }
@@ -36,11 +36,11 @@ Add timeout support:
     ...
     using (var timeout = new ProcessTimeoutMonitor(TimeSpan.FromSeconds(15)))
     {
-        var result = await ProcessEx.ExecuteAsync(psi, evts, timeout);
+        var exitcode = await ProcessEx.ExecuteAsync(psi, evts, timeout);
         ...
     }
 
 And log to Debug output:
 
     var debug = new DebugProcessMonitor();
-    var result = await ProcessEx.ExecuteAsync(psi, ..., debug);
+    var exitcode = await ProcessEx.ExecuteAsync(psi, ..., debug);
