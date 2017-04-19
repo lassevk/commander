@@ -1,4 +1,4 @@
 @echo off
 
 set PROJECT=Commander
-set SUFFIX=-beta
+set SUFFIX=
