@@ -19,7 +19,7 @@ namespace Commander.Tests.CodeQuality
             if (type.IsClass)
                 return true;
 
-            if (!type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
+            if (type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>))
                 return true;
 
             return false;

@@ -5,8 +5,8 @@ class in such a way that it becomes easier to monitor output, feed the running p
 
 ## Monitors
 
-The principle is that you give a [ProcessStartInfo](https://msdn.microsoft.com/en-us/library/system.diagnostics.processstartinfo%28v=vs.110%29.aspx) to
-[ProcessEx](Commander/ProcessEx.cs) and get back a `Task<int>` that represents the running program. The result of the task is the exitcode once the
+The principle is that you give specify which program you want to run, optional arguments and a working folder to
+[ConsoleProcess](Commander/ConsoleProcess.cs) and get back a `Task<int>` that represents the running program. The result of the task is the exitcode once the
 program exits.
 
 To monitor the execution, one or more objects that implement [IProcessMonitor](Commander/IProcessMonitor.cs) can be provided that are called when
@@ -24,12 +24,13 @@ as feed it text on standard input or even forcibly terminate it.
 See the [Events folder](Commander/Events) for some monitors that come with the library. Since the rest of the library only references these monitors
 through the [IProcessMonitor](Commander/IProcessMonitor.cs) interface, new monitors can easily be created.
 
+**THE EXAMPLES BELOW NEED TO BE REWRITTEN - PLEASE IGNORE**
+
 ## Basic example
 
 Here we're going to simply clone a Mercurial repository into a local folder, wait until mercurial has exited, and inspect the exitcode.
 
-    var psi = new ProcessStartInfo("hg", "clone http://some.domain.com/repo d:\temp");
-    var exitcode = await ProcessEx.ExecuteAsync(psi);
+    var exitcode = await ConsoleProcess.ExecuteAsync("hg", "clone http://some.domain.com/repo d:\temp");
     if (exitcode == 0)
     {
         // success

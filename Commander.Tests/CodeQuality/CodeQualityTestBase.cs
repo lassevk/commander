@@ -9,7 +9,7 @@ namespace Commander.Tests.CodeQuality
     {
         public IEnumerable<Assembly> AllAssemblies()
         {
-            yield return typeof(ProcessEx).Assembly;
+            yield return typeof(ConsoleProcess).Assembly;
         }
 
         public IEnumerable<Type> AllPublicTypes()

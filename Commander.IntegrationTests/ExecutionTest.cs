@@ -17,21 +17,21 @@ namespace Commander.IntegrationTests
         {
             using (var timeoutMonitor = new ProcessTimeoutMonitor(TimeSpan.FromSeconds(10)))
             {
-                return Task.Run(async () =>
+                var task = Task.Run(async () =>
                 {
                     var monitor = new ProcessCollectOutputMonitor();
                     var fileName = typeof(Program).Assembly.Location;
-                    var psi = new ProcessStartInfo(fileName, argument);
 
                     monitors = monitors.Concat(new IProcessMonitor[]
                     {
                         monitor,
                         timeoutMonitor
                     }).ToArray();
-                    await ProcessEx.ExecuteAsync(psi, monitors);
+                    await ConsoleProcess.ExecuteAsync(typeof(Program).Assembly.Location, argument, monitors: monitors);
 
                     return monitor.Events;
-                }).Result;
+                });
+                return task?.Result ?? new List<ProcessEvent>();
             }
         }
     }

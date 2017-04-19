@@ -27,15 +27,12 @@ namespace Commander
 
             _Process = new Process();
             _Process.StartInfo = processStartInfo;
-
-            _Process.StartInfo.ErrorDialog = false;
             _Process.StartInfo.UseShellExecute = false;
             _Process.StartInfo.RedirectStandardError = true;
             _Process.StartInfo.StandardErrorEncoding = standardOutputEncoding;
             _Process.StartInfo.RedirectStandardInput = true;
             _Process.StartInfo.RedirectStandardOutput = true;
             _Process.StartInfo.StandardOutputEncoding = standardOutputEncoding;
-            _Process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
             _Process.StartInfo.CreateNoWindow = true;
             _Process.EnableRaisingEvents = true;
             _Process.OutputDataReceived += ProcessOnOutputDataReceived;
